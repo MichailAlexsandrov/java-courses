@@ -9,21 +9,47 @@ public class InteractRunner {
 
 			Calculator calc = new Calculator();
 			String exit = "no";
-			while (!exit.equals("yes")) {
 
+			
+
+			while (!exit.equals("yes")) {
 				System.out.println("Enter first arg");
 				String first = reader.next();
 				System.out.println("Enter second arg");
 				String second = reader.next();	
-				calc.add(Integer.valueOf(first), Integer.valueOf(second));
-				System.out.println("Result: " + calc.getResult());
+
+			System.out.println("Select the operation: amount/difference/subtraction/multiplication");
+			String operation = reader.next();
+
+				if (operation.equals("amount")) {
+					calc.add_summ(Integer.valueOf(first), Integer.valueOf(second));
+					System.out.println("Result: " + calc.getResult());
+				}
+				else if (operation.equals("difference")){
+					calc.add_dif(Integer.valueOf(first), Integer.valueOf(second));
+					System.out.println("Result: " + calc.getResult());	
+				}			
+				else if (operation.equals("subtraction")){
+					calc.add_sub(Integer.valueOf(first), Integer.valueOf(second));
+					System.out.println("Result: " + calc.getResult());
+				}
+				else if (operation.equals("multiplication")){
+					calc.add_mul(Integer.valueOf(first), Integer.valueOf(second));
+					System.out.println("Result: " + calc.getResult());
+				}
+				else
+				{
+					System.out.println("Select does't operation");
+				}
+
 				calc.cleanResult();
 				System.out.println("Exit: yes/no");
 				exit = reader.next();
-
-
 			}
+
+						
 		}
+
 		finally {
 
 			reader.close();
